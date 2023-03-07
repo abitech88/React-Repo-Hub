@@ -6,6 +6,8 @@ import { Grid, Pagination, Spinner } from '@/components';
 import { usePublicRepositories } from '@/hooks/useGithubRepositories';
 import { PAGE_LIMIT } from '@/constants';
 
+import './index.css'
+
 interface Props {}
 
 const HomePage: React.FC<Props> = () => {
@@ -62,30 +64,18 @@ const HomePage: React.FC<Props> = () => {
 
   if (loading || isRefetching) {
     return (
-      <x.div
-        minH='40rem'
-        display='flex'
-        alignItems='center'
-        justifyContent='center'
-        w='100%'
-      >
+      <div className="spinner-container">
         <Spinner variant='large' />
-      </x.div>
+      </div>
     );
   }
 
   return (
-    <x.div px='1rem' py='1rem'>
+    <x.div className='grid-container'>
       <Grid container>
         <Grid item spacing='0.5rem'>
           <x.form onSubmit={handleSubmit}>
-            <x.input
-              w='100%'
-              py='1rem'
-              px='1rem'
-              border='1px solid'
-              borderColor='gray-300'
-              borderRadius
+            <x.input className='search-input'              
               placeholder='Search for a respository'
               id='search'
               name='search'
@@ -103,14 +93,7 @@ const HomePage: React.FC<Props> = () => {
           ))
         ) : (
           <Grid item>
-            <x.div
-              minH='20rem'
-              display='flex'
-              alignItems='center'
-              justifyContent='center'
-              fontSize='1.2rem'
-              fontWeight='500'
-            >
+            <x.div className='no-results-display'>
               No repositories found!
             </x.div>
           </Grid>
@@ -118,16 +101,12 @@ const HomePage: React.FC<Props> = () => {
       </Grid>
       {repositories?.length && pageCount && currentPage ? (
         <x.div
-          display='flex'
-          alignItems='center'
-          justifyContent='center'
-          py='1rem'
+          className='pagination-container'
         >
           <Pagination
             currentPage={currentPage}
             pagesCount={pageCount}
-            onPageChange={handlePageChange}
-            maxW='35rem'
+            onPageChange={handlePageChange}            
           />
         </x.div>
       ) : null}
@@ -151,22 +130,14 @@ const Repository: React.FC<{ repository: Record<string, any> }> = ({
         <x.img
           src={repository?.owner?.avatar_url}
           alt='owner'
-          w='100%'
-          objectFit='cover'
-          borderRadius
+          className='repository-img'
         />
         <x.div>
           <x.p>{repository.name}</x.p>
-          <x.p py='0.5rem'>{repository.description}</x.p>
+          <x.p className='repository-description'>{repository.description}</x.p>
           <x.p>
             <Link to={repository?.owner?.html_url} target='_blank'>
-              <x.button
-                px='1rem'
-                py='0.5rem'
-                borderRadius
-                color='white'
-                bg={{ _: 'gray-700', hover: 'gray-900' }}
-              >
+              <x.button className='default-button'>
                 View Profile
               </x.button>
             </Link>

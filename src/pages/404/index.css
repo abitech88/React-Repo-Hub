@@ -1,0 +1,19 @@
+.main-container{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+}
+
+.content{
+    text-align:center;
+}
+
+.info-text{
+    font-size:2rem;
+    margin-bottom: 1rem;
+}
+
+.goback-link{
+    text-decoration: none; 
+}

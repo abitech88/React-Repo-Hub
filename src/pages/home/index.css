@@ -1,0 +1,46 @@
+.spinner-container{
+    min-height: '40rem';
+    display: 'flex';
+    align-items: 'center';
+    justify-content:'center';
+    width: '100%'
+}
+
+.grid-container{
+    padding: 1rem 1rem;
+}
+
+.search-input{
+    width: 100%;
+    padding: 1rem 1rem;
+    border:1px solid;
+    border-color: rgb(209 213 219);
+    border-radius: 0px;
+}
+
+.no-results-display{
+    min-height: 20rem;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    font-size:1.2rem;
+    font-weight:500
+}
+
+.pagination-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 0rem 1rem;
+}
+
+.repository-img{
+    width: 100%;
+    object-fit:cover;
+    border-radius:0px;
+}
+
+.repository-description{
+    padding:0rem 0.5rem;
+}
+

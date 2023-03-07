@@ -1,0 +1,31 @@
+.spinner-small, .spinner-medium, .spinner-large{
+    display:inline-block;
+    border: 4px;
+    border-color:white white #52525b #52525b;
+    border-radius: 9999px;
+    animation: spin 1s linear infinite
+}
+
+.spinner-small{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.spinner-medium{
+    height: 2rem;
+    width: 2rem;
+}
+
+.spinner-large{
+    height: 3rem;
+    width: 3rem;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

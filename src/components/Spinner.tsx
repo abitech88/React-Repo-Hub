@@ -2,6 +2,8 @@ import { x } from '@xstyled/emotion';
 
 import type { SystemProps } from '@xstyled/emotion';
 
+import './Spinner.css'
+
 interface SpinnerProps extends SystemProps {
   active?: boolean;
   variant?: 'large' | 'medium' | 'small';
@@ -27,6 +29,7 @@ const Spinner: React.FC<SpinnerProps> = ({
   variant = 'medium',
   ...systemProps
 }) => {
+  const spinnerClass = `spinner-${variant}`
   if (!active) {
     return null;
   }
@@ -34,15 +37,7 @@ const Spinner: React.FC<SpinnerProps> = ({
   return (
     <x.div display='flex' justifyContent='center' alignItems='center'>
       <x.div
-        display='inline-block'
-        w={SpinnerVariants[variant].w}
-        h={SpinnerVariants[variant].h}
-        border={4}
-        borderColor='white'
-        borderLeftColor='gray-600'
-        borderBottomColor='gray-600'
-        borderRadius='full'
-        animation='spin'
+        className={spinnerClass}
         aria-label='spinbutton'
         aria-labelledby='spinbutton'
         role='spinbutton'
