@@ -3,6 +3,8 @@ import { x } from '@xstyled/emotion';
 
 import type { SystemProps } from '@xstyled/emotion';
 
+import './Pagination.css';
+
 interface PaginationProps extends SystemProps {
   currentPage: number;
   pagesCount: number;
@@ -22,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
       {...props}
     >
       {currentPage > 1 ? (
-        <x.div className='previous-button-container'>
+        <x.div className='pagination-button-container'>
           <x.a
             className='pagination-button-content'
             onClick={() => onPageChange(currentPage - 1)}
@@ -43,14 +45,14 @@ const Pagination: React.FC<PaginationProps> = ({
             Previous
           </x.a>
         </x.div>
-      ) : null}
+      ) : <x.div className='pagination-button-container' />}
 
-      <x.div display={{ _: 'hidden', md: 'flex' }} mt='-1px'>
+      <x.div className='pagination-number'>
         {new Array(pagesCount).fill(undefined).map((_, idx) => (
           <x.a
             key={idx}
             aria-current={idx === currentPage - 1 ? 'page' : undefined}
-            className={idx===currentPage-1 ? 'page-button-active' : 'page-button-inactive'}
+            className={`page-button ${idx===currentPage-1 ? 'page-button-active' : 'page-button-inactive'}`}
             onClick={() => onPageChange(idx + 1)}
           >
             {idx + 1}
@@ -59,14 +61,14 @@ const Pagination: React.FC<PaginationProps> = ({
       </x.div>
 
       {currentPage < pagesCount ? (
-        <x.div className='next-button-content'>
+        <x.div className='pagination-button-container'>
           <x.a
             className='pagination-button-content'
             onClick={() => onPageChange(currentPage + 1)}
           >
             Next
             <x.svg
-              className='pagination-button-icon'
+              className='pagination-button-icon next'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 20 20'
               fill='currentColor'
@@ -80,7 +82,7 @@ const Pagination: React.FC<PaginationProps> = ({
             </x.svg>
           </x.a>
         </x.div>
-      ) : null}
+      ) : <x.div className='pagination-button-container' />}
     </x.nav>
   );
 };
